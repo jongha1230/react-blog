@@ -1,4 +1,4 @@
-import PostList from "../../../components/posts/PostList";
+import PostList from "../../components/posts/PostList";
 
 function HomePage() {
   return (

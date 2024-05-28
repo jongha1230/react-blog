@@ -1,7 +1,7 @@
 import { Outlet } from "react-router-dom";
 import ModalContainer from "../../components/Modal/ModalContainer";
-import Footer from "../../components/common/Footer";
-import Header from "../../components/common/Header";
+import Footer from "../common/Footer";
+import Header from "../common/Header";
 import { LayoutContainer } from "./MainLayout.styled";
 
 function MainLayout() {

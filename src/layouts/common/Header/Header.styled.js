@@ -16,6 +16,7 @@ export const HeaderContainer = styled.header`
     color: #f4f3ea;
     border: none;
     cursor: pointer;
+    margin-left: 10px;
     &:hover {
       background-color: #444e64;
     }
