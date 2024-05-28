@@ -35,6 +35,11 @@ const GlobalStyle = createGlobalStyle`
       font: inherit;
   }
 
+  a {  text-align: center;
+     text-decoration: none;
+     color: inherit; }
+
+
   @media (prefers-reduced-motion: reduce){
       html:focus-within {
           scroll-behavior: auto;
