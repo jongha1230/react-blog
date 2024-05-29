@@ -8,8 +8,8 @@ function Header() {
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
   const dispatch = useDispatch();
 
-  const handleOpenModal = (type) => {
-    dispatch(openModal(type));
+  const handleOpenModal = (modalType) => {
+    dispatch(openModal({ modalType }));
   };
 
   const handleLogout = () => {
@@ -23,13 +23,16 @@ function Header() {
       </h1>
       {isLoggedIn ? (
         <div>
-          <button onClick={() => console.log("글쓰기 버튼 클릭")}>
-            글쓰기
-          </button>
+          <Link to="/new-post">
+            <button>글쓰기</button>
+          </Link>
           <button onClick={handleLogout}>로그아웃</button>
         </div>
       ) : (
-        <button onClick={() => handleOpenModal("login")}>로그인</button>
+        <div>
+          <button onClick={() => handleOpenModal("login")}>로그인</button>
+          <button onClick={() => handleOpenModal("register")}>회원가입</button>
+        </div>
       )}
     </HeaderContainer>
   );

@@ -21,4 +21,7 @@ export const HeaderContainer = styled.header`
       background-color: #444e64;
     }
   }
+  div {
+    margin-right: 30px;
+  }
 `;

@@ -56,7 +56,7 @@ const RegisterForm = () => {
     localStorage.setItem("users", JSON.stringify(storedUsers));
 
     dispatch(closeModal());
-    dispatch(openModal("login"));
+    dispatch(openModal({ modalType: "login" }));
   };
 
   return (
@@ -92,6 +92,7 @@ const RegisterForm = () => {
         onChange={handleChange}
       />
       <button onClick={handleRegister}>회원가입</button>
+      <button onClick={() => dispatch(closeModal())}>취소</button>
     </RegisterFormContainer>
   );
 };

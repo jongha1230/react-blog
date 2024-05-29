@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { login } from "../../../redux/slices/auth.slice";
-import { closeModal } from "../../../redux/slices/modal.slice";
+import { closeModal, openModal } from "../../../redux/slices/modal.slice";
 import { LoginFormContainer } from "./LoginForm.styled";
 
-const LoginForm = ({ onSwitchToRegister }) => {
+const LoginForm = () => {
   const dispatch = useDispatch();
   const [formData, setFormData] = useState({ username: "", password: "" });
   const [error, setError] = useState("");
@@ -27,8 +27,13 @@ const LoginForm = ({ onSwitchToRegister }) => {
       return;
     }
 
-    dispatch(login({ username }));
+    dispatch(login({ id: user.id }));
     dispatch(closeModal());
+  };
+
+  const handleOpenModal = () => {
+    dispatch(closeModal());
+    dispatch(openModal({ modalType: "register" }));
   };
 
   return (
@@ -50,7 +55,7 @@ const LoginForm = ({ onSwitchToRegister }) => {
         onChange={handleChange}
       />
       <button onClick={handleLogin}>로그인</button>
-      <button onClick={onSwitchToRegister}>회원가입</button>
+      <button onClick={handleOpenModal}>회원가입</button>
     </LoginFormContainer>
   );
 };

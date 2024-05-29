@@ -22,7 +22,10 @@ const postSlice = createSlice({
       }
     },
     deletePost(state, action) {
-      state.posts = state.posts.filter((post) => post.id !== action.payload);
+      const { postId, userId } = action.payload;
+      state.posts = state.posts.filter(
+        (post) => post.id !== postId || post.userId !== userId
+      );
       localStorage.setItem("posts", JSON.stringify(state.posts));
     },
   },
