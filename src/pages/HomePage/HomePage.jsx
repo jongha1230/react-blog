@@ -2,10 +2,9 @@ import PostList from "../../components/posts/PostList";
 
 function HomePage() {
   return (
-    <>
-      <h1>메인 페이지</h1>
+    <div className="grid place-items-center h-full">
       <PostList />
-    </>
+    </div>
   );
 }
 

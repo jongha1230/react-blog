@@ -1,4 +1,4 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
 import { openModal } from "../../../redux/slices/modal.slice";
@@ -8,14 +8,20 @@ import { StyledForm } from "./PostForm.styled";
 function PostForm() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const userId = useSelector((state) => state.auth);
+  const loginId = localStorage.getItem("login");
+  const userObject = JSON.parse(loginId);
+  const { id: userId, name: userName } = userObject;
 
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    console.log("이거", userId);
     const title = event.target.title.value;
     const content = event.target.content.value;
+    const newDate = new Date();
+    const year = newDate.getFullYear();
+    const month = ("0" + (newDate.getMonth() + 1)).slice(-2);
+    const day = ("0" + newDate.getDate()).slice(-2);
+    const date = `${year}-${month}-${day}`;
 
     if (!title || !content) {
       dispatch(
@@ -27,7 +33,7 @@ function PostForm() {
       return;
     }
 
-    dispatch(addPost({ id: uuidv4(), title, content, userId }));
+    dispatch(addPost({ id: uuidv4(), title, content, userId, date, userName }));
 
     event.target.reset();
     navigate("/");
