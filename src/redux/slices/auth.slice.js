@@ -4,7 +4,7 @@ const storedUser = JSON.parse(localStorage.getItem("login"));
 
 const initialState = {
   isLoggedIn: storedUser ? true : false,
-  user: storedUser ? storedUser.user : null,
+  user: storedUser ? storedUser : null,
 };
 
 const authSlice = createSlice({

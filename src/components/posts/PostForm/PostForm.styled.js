@@ -3,9 +3,9 @@ import styled from "styled-components";
 export const StyledForm = styled.form`
   display: flex;
   flex-direction: column;
-  max-width: 500px;
-  width: 100%;
-  height: 400px;
+
+  width: 50rem;
+  height: 90%;
   margin: 0 auto;
   padding: 20px;
   background-color: #f9f9f9;
@@ -28,7 +28,7 @@ export const StyledForm = styled.form`
 
   textarea {
     resize: none;
-    height: 150px;
+    height: 80em;
   }
 
   button {

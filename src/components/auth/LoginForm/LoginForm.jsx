@@ -27,7 +27,7 @@ const LoginForm = () => {
       return;
     }
 
-    dispatch(login({ id: user.id, name: user.username }));
+    dispatch(login({ id: user.id, username: user.username }));
     dispatch(closeModal());
   };
 

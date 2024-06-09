@@ -1,4 +1,4 @@
-import LoginForm from "../../auth/LoginForm/LoginForm";
+import LoginForm from "../../auth/LoginForm";
 import { LoginModalContainer } from "./LoginModal.styled";
 
 const LoginModal = () => {

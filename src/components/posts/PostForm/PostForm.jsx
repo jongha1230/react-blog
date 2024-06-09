@@ -1,5 +1,6 @@
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import slugify from "slugify";
 import { v4 as uuidv4 } from "uuid";
 import { openModal } from "../../../redux/slices/modal.slice";
 import { addPost } from "../../../redux/slices/post.slice";
@@ -11,6 +12,10 @@ function PostForm() {
   const loginId = localStorage.getItem("login");
   const userObject = JSON.parse(loginId);
   const { id: userId, name: userName } = userObject;
+  const title = "post";
+  const slugBase = slugify(title, { lower: true, strict: true });
+
+  const postId = `${slugBase}-${uuidv4().slice(0, 8)}`;
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -33,7 +38,7 @@ function PostForm() {
       return;
     }
 
-    dispatch(addPost({ id: uuidv4(), title, content, userId, date, userName }));
+    dispatch(addPost({ id: postId, title, content, userId, date, userName }));
 
     event.target.reset();
     navigate("/");
